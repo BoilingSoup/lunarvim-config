@@ -25,11 +25,11 @@ lvim.keys.normal_mode["<S-Tab>"] = ":BufferLineCyclePrev<CR>"
 
 -- whichkey + bindings
 lvim.keys.normal_mode["<leader>t"] = "<cmd>ToggleTerm<CR>"
-lvim.keys.normal_mode["<leader>z"] = ":nohl<CR>"
+lvim.keys.normal_mode["<leader>n"] = ":nohl<CR>"
 lvim.builtin.which_key.mappings["t"] = {
   "ToggleTerm"
 }
-lvim.builtin.which_key.mappings["z"] = {
+lvim.builtin.which_key.mappings["n"] = {
   "nohl"
 }
 
