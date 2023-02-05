@@ -23,8 +23,15 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<Tab>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-Tab>"] = ":BufferLineCyclePrev<CR>"
 
--- toggleterm keymap + whichkey entry
+-- whichkey + bindings
 lvim.keys.normal_mode["<leader>t"] = "<cmd>ToggleTerm<CR>"
+lvim.keys.normal_mode["<leader>z"] = ":nohl<CR>"
+lvim.builtin.which_key.mappings["t"] = {
+  "ToggleTerm"
+}
+lvim.builtin.which_key.mappings["z"] = {
+  "nohl"
+}
 
 -- shorten timeoutlen only for jk | kj <Esc> without effecting other keybinds
 -- jk saves, kj does not
