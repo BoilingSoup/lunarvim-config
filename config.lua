@@ -28,10 +28,10 @@ lvim.keys.normal_mode["<S-Tab>"] = ":BufferLineCyclePrev<CR>"
 lvim.keys.normal_mode["<leader>t"] = "<cmd>ToggleTerm<CR>"
 lvim.keys.normal_mode["<leader>n"] = ":nohl<CR>"
 lvim.builtin.which_key.mappings["t"] = {
-  "ToggleTerm"
+    "ToggleTerm"
 }
 lvim.builtin.which_key.mappings["n"] = {
-  "nohl"
+    "nohl"
 }
 
 -- shorten timeoutlen only for jk | kj <Esc> without effecting other keybinds
@@ -48,6 +48,11 @@ vim.cmd([[
   inoremap <expr> j JKescape('j')
   inoremap <expr> k JKescape('k')
 ]])
+
+-- cmp autoselect first option
+lvim.builtin.cmp.confirm_opts = {
+    select = true
+}
 
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
@@ -99,28 +104,28 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
-  "bash",
-  "c",
-  "javascript",
-  "json",
-  "lua",
-  "python",
-  "typescript",
-  "tsx",
-  "css",
-  "rust",
-  "java",
-  "yaml",
-  "go",
-  "gomod",
-  "html",
-  "toml",
-  "cpp",
-  "svelte",
-  "php",
-  "markdown",
-  "vim",
-  "dockerfile"
+    "bash",
+    "c",
+    "javascript",
+    "json",
+    "lua",
+    "python",
+    "typescript",
+    "tsx",
+    "css",
+    "rust",
+    "java",
+    "yaml",
+    "go",
+    "gomod",
+    "html",
+    "toml",
+    "cpp",
+    "svelte",
+    "php",
+    "markdown",
+    "vim",
+    "dockerfile"
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -170,17 +175,17 @@ lvim.builtin.treesitter.highlight.enable = true
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { command = "black", filetypes = { "python" } },
-  --   { command = "isort", filetypes = { "python" } },
-  {
-    -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
-    command = "prettier",
-    ---@usage arguments to pass to the formatter
-    -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-    extra_args = { "--print-with", "120" },
-    ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "template", "tmpl", "typescript", "typescriptreact", "javascript", "javascriptreact", "html", "css" },
-  },
+    { command = "black", filetypes = { "python" } },
+    --   { command = "isort", filetypes = { "python" } },
+    {
+        -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
+        command = "prettier",
+        ---@usage arguments to pass to the formatter
+        -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
+        extra_args = { "--print-with", "120" },
+        ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+        filetypes = { "template", "tmpl", "typescript", "typescriptreact", "javascript", "javascriptreact", "html", "css" },
+    },
 }
 
 -- -- set additional linters
@@ -209,124 +214,125 @@ formatters.setup {
 --     },
 -- }
 lvim.plugins = {
-  { "karb94/neoscroll.nvim" },
-  { "BoilingSoup/fruitypebbles.nvim" },
-  {
-    "phaazon/hop.nvim",
-    event = "BufRead",
-    config = function()
-      require("hop").setup()
-      vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", { silent = true })
-      vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", { silent = true })
-    end,
-  },
-  {
-    "windwp/nvim-ts-autotag",
-    config = function()
-      require("nvim-ts-autotag").setup()
-    end,
-  },
-  {
-    "p00f/nvim-ts-rainbow",
-    config = function() vim.api.nvim_create_augroup("rainbow", {
-        clear = true,
-      })
+    { "karb94/neoscroll.nvim" },
+    { "BoilingSoup/fruitypebbles.nvim" },
+    {
+        "phaazon/hop.nvim",
+        event = "BufRead",
+        config = function()
+          require("hop").setup()
+          vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", { silent = true })
+          vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", { silent = true })
+        end,
+    },
+    {
+        "windwp/nvim-ts-autotag",
+        config = function()
+          require("nvim-ts-autotag").setup()
+        end,
+    },
+    {
+        "p00f/nvim-ts-rainbow",
+        config = function()
+          vim.api.nvim_create_augroup("rainbow", {
+              clear = true,
+          })
 
-      vim.api.nvim_create_autocmd({ "Filetype" }, {
-        pattern = "*",
-        callback = function()
-          vim.api.nvim_set_hl(0, "rainbowcol1", {
-            bold = false,
-            fg = "#FF0000",
+          vim.api.nvim_create_autocmd({ "Filetype" }, {
+              pattern = "*",
+              callback = function()
+                vim.api.nvim_set_hl(0, "rainbowcol1", {
+                    bold = false,
+                    fg = "#FF0000",
+                })
+                vim.api.nvim_set_hl(0, "rainbowcol2", {
+                    bold = false,
+                    fg = "#1F85DE"
+                })
+                vim.api.nvim_set_hl(0, "rainbowcol3", {
+                    bold = false,
+                    fg = "#D6DE1F"
+                })
+                vim.api.nvim_set_hl(0, "rainbowcol4", {
+                    bold = false,
+                    fg = "#FFAA00"
+                })
+                vim.api.nvim_set_hl(0, "rainbowcol5", {
+                    bold = false,
+                    fg = "#FF0000"
+                })
+                vim.api.nvim_set_hl(0, "rainbowcol6", {
+                    bold = false,
+                    fg = "#F79494"
+                })
+                vim.api.nvim_set_hl(0, "rainbowcol7", {
+                    bold = false,
+                    fg = "#6CCEDE"
+                })
+              end,
+              group = "rainbow",
           })
-          vim.api.nvim_set_hl(0, "rainbowcol2", {
-            bold = false,
-            fg = "#1F85DE"
-          })
-          vim.api.nvim_set_hl(0, "rainbowcol3", {
-            bold = false,
-            fg = "#D6DE1F"
-          })
-          vim.api.nvim_set_hl(0, "rainbowcol4", {
-            bold = false,
-            fg = "#FFAA00"
-          })
-          vim.api.nvim_set_hl(0, "rainbowcol5", {
-            bold = false,
-            fg = "#FF0000"
-          })
-          vim.api.nvim_set_hl(0, "rainbowcol6", {
-            bold = false,
-            fg = "#F79494"
-          })
-          vim.api.nvim_set_hl(0, "rainbowcol7", {
-            bold = false,
-            fg = "#6CCEDE"
+        end
+    },
+    {
+        "norcalli/nvim-colorizer.lua",
+        config = function()
+          require("colorizer").setup({ "css", "scss", "html", "javascript", "typescript", "typescriptreact" }, {
+              RGB = true, -- #RGB hex codes
+              RRGGBB = true, -- #RRGGBB hex codes
+              RRGGBBAA = true, -- #RRGGBBAA hex codes
+              rgb_fn = true, -- CSS rgb() and rgba() functions
+              hsl_fn = true, -- CSS hsl() and hsla() functions
+              css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+              css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
           })
         end,
-        group = "rainbow",
-      })
-    end
-  },
-  {
-    "norcalli/nvim-colorizer.lua",
-    config = function()
-      require("colorizer").setup({ "css", "scss", "html", "javascript", "typescript", "typescriptreact" }, {
-        RGB = true, -- #RGB hex codes
-        RRGGBB = true, -- #RRGGBB hex codes
-        RRGGBBAA = true, -- #RRGGBBAA hex codes
-        rgb_fn = true, -- CSS rgb() and rgba() functions
-        hsl_fn = true, -- CSS hsl() and hsla() functions
-        css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-        css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-      })
-    end,
-  },
-  {
-    "metakirby5/codi.vim",
-    cmd = "Codi",
-  },
-  {
-    "folke/todo-comments.nvim",
-    event = "BufRead",
-    config = function()
-      require("todo-comments").setup()
-    end,
-  },
-  {
-    "tpope/vim-surround",
+    },
+    {
+        "metakirby5/codi.vim",
+        cmd = "Codi",
+    },
+    {
+        "folke/todo-comments.nvim",
+        event = "BufRead",
+        config = function()
+          require("todo-comments").setup()
+        end,
+    },
+    {
+        "tpope/vim-surround",
 
-    -- make sure to change the value of `timeoutlen` if it's not triggering correctly, see https://github.com/tpope/vim-surround/issues/117
-    -- setup = function()
-    --  vim.o.timeoutlen = 500
-    -- end
-  },
-  -- GO IDE starter
-  {
-    "LunarVim/starter.lvim"
-  },
-  {
-    "roobert/tailwindcss-colorizer-cmp.nvim",
-    config = function()
-      require("tailwindcss-colorizer-cmp").setup({
-        color_square_width = 2,
-      })
-    end
-  }
+        -- make sure to change the value of `timeoutlen` if it's not triggering correctly, see https://github.com/tpope/vim-surround/issues/117
+        -- setup = function()
+        --  vim.o.timeoutlen = 500
+        -- end
+    },
+    -- GO IDE starter
+    {
+        "LunarVim/starter.lvim"
+    },
+    {
+        "roobert/tailwindcss-colorizer-cmp.nvim",
+        config = function()
+          require("tailwindcss-colorizer-cmp").setup({
+              color_square_width = 2,
+          })
+        end
+    }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = { "*.json", "*.jsonc" },
-  -- enable wrap mode for json files only
-  command = "setlocal wrap",
+    pattern = { "*.json", "*.jsonc" },
+    -- enable wrap mode for json files only
+    command = "setlocal wrap",
 })
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "zsh",
-  callback = function()
-    -- let treesitter use bash highlight for zsh files as well
-    require("nvim-treesitter.highlight").attach(0, "bash")
-  end,
+    pattern = "zsh",
+    callback = function()
+      -- let treesitter use bash highlight for zsh files as well
+      require("nvim-treesitter.highlight").attach(0, "bash")
+    end,
 })
 
 
@@ -336,5 +342,5 @@ lvim.colorscheme = "fruitypebbles"
 lvim.builtin.treesitter.rainbow.enable = true
 -- enable tailwind helper
 lvim.builtin.cmp.formatting = {
-  format = require("tailwindcss-colorizer-cmp").formatter
+    format = require("tailwindcss-colorizer-cmp").formatter
 }
