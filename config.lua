@@ -287,7 +287,7 @@ lvim.plugins = {
 		"norcalli/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup(
-				{ "css", "scss", "html", "javascript", "javascriptreact", "typescript", "typescriptreact" },
+				{ "css", "scss", "html", "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte" },
 				{
 					RGB = true, -- #RGB hex codes
 					RRGGBB = true, -- #RRGGBB hex codes
