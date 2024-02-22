@@ -30,6 +30,7 @@ lvim.keys.normal_mode["<Tab>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-Tab>"] = ":BufferLineCyclePrev<CR>"
 lvim.keys.normal_mode["<leader>ss"] = ":SearchSession<CR>"
 lvim.keys.normal_mode["<leader>t"] = "<cmd>ToggleTerm<CR>"
+lvim.keys.normal_mode["<leader>ie"] = "oif err != nil {<Enter>}<Esc>kO"
 
 -- whichkey + bindings
 lvim.builtin.which_key.mappings["t"] = {
