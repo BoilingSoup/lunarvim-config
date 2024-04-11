@@ -166,11 +166,17 @@ lvim.lsp.installer.setup.automatic_installation = false
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 --
+
 require("lvim.lsp.manager").setup("solidity", {
 	cmd = { "nomicfoundation-solidity-language-server", "--stdio" },
 	filetypes = { "solidity" },
 	root_dir = require("lspconfig.util").find_git_ancestor,
 	single_file_support = true,
+})
+
+-- it's htmx time
+require("lvim.lsp.manager").setup("htmx", {
+	filetypes = { "html" },
 })
 
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
