@@ -179,6 +179,21 @@ require("lvim.lsp.manager").setup("htmx", {
 	filetypes = { "html" },
 })
 
+require("lvim.lsp.manager").setup("tailwindcss", {
+	filetypes = { "go" },
+	settings = {
+		tailwindCSS = {
+			experimental = {
+				classRegex = {
+					"Style\\s*:?=\\s*['\"`]([^'\"`]*)['\"`]",
+					'Class\\("([\\w\\s\\-\\:\\[\\]/]*)"\\)',
+					'Classes\\{"([\\w\\s\\-\\:\\[\\]/]*)":(.)*\\}',
+				},
+			},
+		},
+	},
+})
+
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
 -- ---`:LvimInfo` lists which server(s) are skipped for the current filetype
 -- lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
