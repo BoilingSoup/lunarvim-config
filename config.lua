@@ -31,7 +31,7 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<leader>ss"] = ":SearchSession<CR>"
 lvim.keys.normal_mode["<leader>t"] = "<cmd>ToggleTerm<CR>"
 -- keybinds for .go
-lvim.keys.normal_mode["<leader>ie"] = "oif err != nil {<Enter>}<Esc>:lua vim.lsp.buf.format()<CR>O"
+lvim.keys.normal_mode["<leader>ie"] = "iif err != nil {<Enter>}<Esc>:lua vim.lsp.buf.format()<CR>O"
 lvim.keys.normal_mode["<leader>pm"] =
 	"ipackage main<Enter><Enter>func main() {<Enter>}<Esc>:lua vim.lsp.buf.format()<CR>O"
 
