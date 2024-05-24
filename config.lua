@@ -31,7 +31,7 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<leader>ss"] = ":SearchSession<CR>"
 lvim.keys.normal_mode["<leader>t"] = "<cmd>ToggleTerm<CR>"
 -- keybinds for .go
-lvim.keys.normal_mode["<leader>ie"] = "iif err != nil {<Enter>}<Esc>:lua vim.lsp.buf.format()<CR>O"
+lvim.keys.normal_mode["<leader>ie"] = "oif err != nil {<Enter>}<Esc>:lua vim.lsp.buf.format()<CR>O"
 lvim.keys.normal_mode["<leader>pm"] =
 	"ipackage main<Enter><Enter>func main() {<Enter>}<Esc>:lua vim.lsp.buf.format()<CR>O"
 
@@ -255,6 +255,7 @@ linters.setup({
 	-- { command = "solhint", extra_args = { "$FILENAME" }, filetypes = { "solidity" } }
 	{ command = "solhint", extra_args = { "stdin" }, filetypes = { "solidity" } },
 	{ command = "staticcheck", args = { "./..." }, filetypes = { "go" } },
+	{ command = "golangci-lint", filetypes = { "go" } },
 	{ command = "eslint_d" },
 	{ command = "protolint" },
 	-- { command = "shellcheck" } *for some reason this is active automatically after installing*
