@@ -33,7 +33,7 @@ lvim.keys.normal_mode["<leader>t"] = "<cmd>ToggleTerm<CR>"
 -- keybinds for .go
 lvim.keys.normal_mode["<leader>ie"] = "oif err != nil {<Enter>}<Esc>:lua vim.lsp.buf.format()<CR>O"
 lvim.keys.normal_mode["<leader>io"] = "oif !ok {<Enter>}<Esc>:lua vim.lsp.buf.format()<CR>O"
-lvim.keys.normal_mode["<leader>wr"] =
+lvim.keys.normal_mode["<leader>nf"] =
 	"a(w http.ResponseWriter, r *http.Request) {<Enter>}<Esc>:lua vim.lsp.buf.format()<CR>O"
 lvim.keys.normal_mode["<leader>mw"] =
 	"a(next http.Handler) http.Handler {<Enter>return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {<Enter>next.ServeHTTP(w, r)})}<Esc>:lua vim.lsp.buf.format()<CR>kkO<Esc>O"
