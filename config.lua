@@ -32,6 +32,12 @@ lvim.keys.normal_mode["<leader>ss"] = ":SearchSession<CR>"
 lvim.keys.normal_mode["<leader>t"] = "<cmd>ToggleTerm<CR>"
 -- keybinds for .go
 lvim.keys.normal_mode["<leader>ie"] = "oif err != nil {<Enter>}<Esc>:lua vim.lsp.buf.format()<CR>O"
+lvim.keys.normal_mode["<leader>io"] = "oif !ok {<Enter>}<Esc>:lua vim.lsp.buf.format()<CR>O"
+lvim.keys.normal_mode["<leader>wr"] =
+	"a(w http.ResponseWriter, r *http.Request) {<Enter>}<Esc>:lua vim.lsp.buf.format()<CR>O"
+lvim.keys.normal_mode["<leader>mw"] =
+	"a(next http.Handler) http.Handler {<Enter>return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {<Enter>next.ServeHTTP(w, r)})}<Esc>:lua vim.lsp.buf.format()<CR>kkO<Esc>O"
+
 lvim.keys.normal_mode["<leader>pm"] =
 	"ipackage main<Enter><Enter>func main() {<Enter>}<Esc>:lua vim.lsp.buf.format()<CR>O"
 
@@ -194,6 +200,12 @@ require("lvim.lsp.manager").setup("tailwindcss", {
 	},
 })
 
+-- require("lvim.lsp.manager").setup("sqlls", {
+-- 	cmd = { "sql-language-server", "up", "--method", "stdio" },
+-- 	filetypes = { "sql" },
+-- 	root_dir = require("lspconfig.util").find_git_ancestor,
+-- })
+
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
 -- ---`:LvimInfo` lists which server(s) are skipped for the current filetype
 -- lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
@@ -254,7 +266,7 @@ linters.setup({
 	{ command = "flake8", filetypes = { "python" } },
 	-- { command = "solhint", extra_args = { "$FILENAME" }, filetypes = { "solidity" } }
 	{ command = "solhint", extra_args = { "stdin" }, filetypes = { "solidity" } },
-	{ command = "staticcheck", args = { "./..." }, filetypes = { "go" } },
+	-- { command = "staticcheck", args = { "./..." }, filetypes = { "go" } },
 	{ command = "golangci-lint", filetypes = { "go" } },
 	{ command = "eslint_d" },
 	{ command = "protolint" },
